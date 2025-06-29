@@ -6,24 +6,7 @@ const ACCESS_KEY = 'uUxksqa5SuAoZMBX3pxN';
 async function runTestOnSafari() {
     let currentfuncalltime = Date.now();
     let maxsecondsfunctioncall = 360;
-    const capabilities = {
-        'browserName': 'Safari',
-        'browserVersion': 'latest',
-        'bstack:options': {
-            'os': 'OS X',
-            'osVersion': 'Sequoia',
-            'projectName': 'My Safari Test',
-            'buildName': 'Build #1',
-            'sessionName': 'Safari automation test',
-            'local': 'false',
-            'seleniumVersion': '4.0.0',
-        }
-    };
-
-    const driver = await new Builder()
-        .usingServer(`https://${USERNAME}:${ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub`)
-        .withCapabilities(capabilities)
-        .build();
+    const driver = await new Builder().forBrowser('safari').build();
 
     try {
         const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJ1dWlkIjoiNjI1YzM5YTAtM2UwMy00ZjYxLTlmNDMtMjdkNmFlODU5MGFhIiwidXNlcm5hbWUiOiIweDRkYmZlNzhiMWUwNTQ1NmM3N2Y5MDQ4ZGNhZWJiODVjZDk2NjY1MmUiLCJpZCI6IjEyNDg0MCIsImJhblVudGlsIjpudWxsLCJzaWQiOiJmNzZlODY0Zi05NGE4LTRkZGQtOTk5OS03ODY5ZTlmZDRiYWIiLCJleHAiOjE3NTM1MjUxMzN9.26SN_LwmMZaEHoXpiB7eivhJoL4nQREwSPymxpDxDTs'
