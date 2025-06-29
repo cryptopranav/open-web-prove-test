@@ -30,10 +30,11 @@ async function runTestOnSafari() {
         let prev = 0;
         while (round < maxRounds) {
             const proofNumberText = await driver.findElement(By.xpath(proofNumberTextXPath)).getText();
+            const balance = await driver.findElement(By.xpath('//*[@id="root"]/div/div/div/main/div/div/div[1]/div[1]/div[2]/div/div[1]/p[1]/span[1]')).getText();
             //console.log("Proof Number Text:", proofNumberText);
             const proofNumber = parseInt(proofNumberText, 10);
             if(prev != proofNumber){
-                console.log(`Proof Number ${proofNumber}`)
+                console.log(`Proof Number ${proofNumber} ON:${balance}`)
                 prev = proofNumber
             }
             if(Date.now() - currentfuncalltime > maxsecondsfunctioncall * 1000) {
@@ -69,13 +70,11 @@ async function runTestOnSafari() {
 }
 
 async function main() {
-    while (true) {
         try {
             await runTestOnSafari();
             await new Promise(resolve => setTimeout(resolve, 60000)); // Wait for 60 seconds before next run
         } catch (error) {
             console.error('Error during test execution:', error);
         }
-    }
 }
 main();
