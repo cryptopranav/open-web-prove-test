@@ -1,0 +1,25 @@
+name: Run Selenium JS Tests on Safari
+
+on: [push, pull_request]
+
+jobs:
+  selenium-safari:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Or your preferred version
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Enable Safari WebDriver
+        run: sudo safaridriver --enable
+
+      - name: Run Selenium Tests
+        run: node slenium.js
