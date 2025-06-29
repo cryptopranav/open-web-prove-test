@@ -3,7 +3,7 @@ import { Builder, By } from 'selenium-webdriver'
 
 async function runTestOnSafari() {
     let currentfuncalltime = Date.now();
-    let maxsecondsfunctioncall = 360 * 10;
+    let maxsecondsfunctioncall = 360 * 2;
     const driver = await new Builder().forBrowser('safari').build();
 
     try {
@@ -25,7 +25,7 @@ async function runTestOnSafari() {
 
         const proofNumberTextXPath = '//*[@id="root"]/div/div/div/main/div/div/div[1]/div[1]/div[2]/div/div[3]/p[1]';
         let round = 0;
-        const maxRounds = 2;
+        const maxRounds = 1;
         let startTime = Date.now();
         let prev = 0;
         while (round < maxRounds) {
@@ -38,14 +38,14 @@ async function runTestOnSafari() {
             }
             if(Date.now() - currentfuncalltime > maxsecondsfunctioncall * 1000) {
                 console.log("Function call exceeded maximum time limit, breaking the loop");
-                break;
+                process.exit(1);
             }
             if (proofNumber >= 14) {
                 let temp = 14;
                 while (true) {
                     if(Date.now() - currentfuncalltime > maxsecondsfunctioncall * 1000) {
                         console.log("Function call exceeded maximum time limit, breaking the loop");
-                        break;
+                        process.exit(1);
                     }
                     const ttt = await driver.findElement(By.xpath(proofNumberTextXPath)).getText();
                     temp = parseInt(ttt, 10);
