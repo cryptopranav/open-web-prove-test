@@ -1,7 +1,5 @@
 import { Builder, By } from 'selenium-webdriver'
 
-const USERNAME = 'pranavkdileep_5qbSfc';
-const ACCESS_KEY = 'uUxksqa5SuAoZMBX3pxN';
 
 async function runTestOnSafari() {
     let currentfuncalltime = Date.now();
