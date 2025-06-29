@@ -3,7 +3,7 @@ import { Builder, By } from 'selenium-webdriver'
 
 async function runTestOnSafari() {
     let currentfuncalltime = Date.now();
-    let maxsecondsfunctioncall = 360;
+    let maxsecondsfunctioncall = 360 * 10;
     const driver = await new Builder().forBrowser('safari').build();
 
     try {
@@ -25,13 +25,17 @@ async function runTestOnSafari() {
 
         const proofNumberTextXPath = '//*[@id="root"]/div/div/div/main/div/div/div[1]/div[1]/div[2]/div/div[3]/p[1]';
         let round = 0;
-        const maxRounds = 4;
+        const maxRounds = 2;
         let startTime = Date.now();
-
+        let prev = 0;
         while (round < maxRounds) {
             const proofNumberText = await driver.findElement(By.xpath(proofNumberTextXPath)).getText();
-            console.log("Proof Number Text:", proofNumberText);
+            //console.log("Proof Number Text:", proofNumberText);
             const proofNumber = parseInt(proofNumberText, 10);
+            if(prev != proofNumber){
+                console.log(`Proof Number ${proofNumber}`)
+                prev = proofNumber
+            }
             if(Date.now() - currentfuncalltime > maxsecondsfunctioncall * 1000) {
                 console.log("Function call exceeded maximum time limit, breaking the loop");
                 break;
@@ -45,7 +49,7 @@ async function runTestOnSafari() {
                     }
                     const ttt = await driver.findElement(By.xpath(proofNumberTextXPath)).getText();
                     temp = parseInt(ttt, 10);
-                    console.log("waiting proofNumber to be zero");
+                    //console.log("waiting proofNumber to be zero");
                     if (temp === 0) {
                         console.log("Proof number is zero, breaking the loop");
                         break;
