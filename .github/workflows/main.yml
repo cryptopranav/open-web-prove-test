@@ -1,6 +1,9 @@
 name: Run Selenium JS Tests on Safari
 
-on: [workflow_dispatch, pull_request]
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
 
 jobs:
   selenium-safari:
