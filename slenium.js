@@ -7,7 +7,7 @@ async function runTestOnSafari() {
     const driver = await new Builder().forBrowser('safari').build();
 
     try {
-        const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJ1dWlkIjoiNjI1YzM5YTAtM2UwMy00ZjYxLTlmNDMtMjdkNmFlODU5MGFhIiwidXNlcm5hbWUiOiIweDRkYmZlNzhiMWUwNTQ1NmM3N2Y5MDQ4ZGNhZWJiODVjZDk2NjY1MmUiLCJpZCI6IjEyNDg0MCIsImJhblVudGlsIjpudWxsLCJzaWQiOiJmNzZlODY0Zi05NGE4LTRkZGQtOTk5OS03ODY5ZTlmZDRiYWIiLCJleHAiOjE3NTM1MjUxMzN9.26SN_LwmMZaEHoXpiB7eivhJoL4nQREwSPymxpDxDTs'
+        const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjI5NjY3MiIsInV1aWQiOiI0MGJkNzJjYi1lYmU1LTQzYTktYWU3Yi0yYzJmZDJlYjhmYmYiLCJ1c2VybmFtZSI6IjB4ZTY4YjhjYWEwYmM3NmM0ZGM0MTE5MTY0MTU5MTRhMjg4OTZiNjViOSIsImJhblVudGlsIjpudWxsLCJpc0FjdGl2ZSI6dHJ1ZSwicHJvZmlsZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0wNi0zMFQwNzoxODo1Ni4zMzNaIiwidXBkYXRlZEF0IjoiMjAyNS0wNi0zMFQwNzoxODo1Ni4zMzNaIiwic2lkIjoiNWI4ZjlkOWEtMGFmZS00MTg4LWFhOTMtZWNkZWZhZWE1MzQwIiwiZXhwIjoxNzUzODU5OTM2fQ.8QEuPm_mfQuDN_AirzsyjKukS3B-uiDr23uHFbNd_BU'
         await driver.manage().addCookie({
             name: 'accessToken',
             value: accessToken,
@@ -25,7 +25,7 @@ async function runTestOnSafari() {
 
         const proofNumberTextXPath = '//*[@id="root"]/div/div/div/main/div/div/div[1]/div[1]/div[2]/div/div[3]/p[1]';
         let round = 0;
-        const maxRounds = 1;
+        const maxRounds = 2;
         let startTime = Date.now();
         let prev = 0;
         while (round < maxRounds) {
