@@ -3,7 +3,7 @@ import { Builder, By } from 'selenium-webdriver'
 
 async function runTestOnSafari() {
     let currentfuncalltime = Date.now();
-    let maxsecondsfunctioncall = 360 * 4;
+    let maxsecondsfunctioncall = 360 * 6;
     const driver = await new Builder().forBrowser('safari').build();
 
     try {
